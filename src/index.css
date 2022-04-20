@@ -1,3 +1,6 @@
 @tailwind base;
+body {
+  @apply bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200 selection:bg-indigo-500 selection:text-white;
+}
 @tailwind components;
 @tailwind utilities;
