@@ -39,7 +39,7 @@ const Children = ({ parent }) => {
 export default Children;
 
 const Child = ({ mews }) => (
-    <div className='bg-slate-50 dark:bg-slate-700 rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5'>
+    <div className='bg-slate-50 dark:bg-neutral-800 rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5'>
         {mews.title && <h1 className='font-semibold text-2xl'>{mews.title}</h1>}
         <div className='flex flex-row items-center gap-5 text-sm'>
             <div className=''>@{mews.submitter.username}</div>
@@ -59,7 +59,7 @@ const Child = ({ mews }) => (
                 {mews.children.length}
             </div>
 
-            <Link to={`/${mews._id}`} className='text-xs font-semibold uppercase py-1 px-2 border rounded border-slate-500 hover:border-slate-50 hover:bg-indigo-500 hover:text-slate-50'>
+            <Link to={`/${mews._id}`} className='text-xs font-medium uppercase py-1 px-2 border rounded-md border-slate-500 hover:border-slate-50 hover:bg-indigo-500 hover:text-slate-50'>
                 detail
             </Link>
         </div>

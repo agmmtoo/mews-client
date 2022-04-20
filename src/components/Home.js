@@ -36,7 +36,7 @@ const MewsListItem = ({ mews }) => {
     let ms = new Date(mews.createdAt) / 1000
     return (
         <>
-            <div className='rounded-lg shadow-md bg-slate-50 dark:bg-slate-700 mx-auto mt-5 p-3 w-11/12 md:w-4/5'>
+            <div className='rounded-lg shadow-md bg-slate-50 dark:bg-neutral-800 mx-auto mt-5 p-3 w-11/12 md:w-4/5'>
                 <h1 className='font-semibold text-2xl'>{mews.title}</h1>
                 <div className='flex flex-row items-center gap-5 text-sm'>
                     <div className=''>@{mews.submitter.username}</div>
