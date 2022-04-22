@@ -42,7 +42,7 @@ export default MewsRead;
 const MewsDetail = ({ mews }) => {
     let ms = new Date(mews.createdAt) / 1000
     return (
-        <div className='rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5 bg-gradient-to-r from-fuchsia-300 to-indigo-300 dark:from-fuchsia-600 dark:to-indigo-600'>
+        <div className='rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5 bg-gradient-to-r from-fuchsia-300 to-indigo-300 dark:from-fuchsia-500 dark:to-violet-500'>
             {mews.title && <h1 className='font-semibold text-2xl'>{mews.title}</h1>}
             <div className='flex flex-row items-center gap-5 text-sm'>
                 <div className=''>@{mews.submitter.username}</div>

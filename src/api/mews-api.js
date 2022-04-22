@@ -165,11 +165,14 @@ const destroy = async ({ signal, mewsId }) => {
     }
 }
 
-const boost = async ({ signal, mewsId }) => {
+const boost = async ({ signal, mewsId, token }) => {
     try {
         let response = await fetch(`${BASE_URL}/${mewsId}/boost`, {
             method: 'PUT',
-            headers,
+            headers: {
+                ...headers,
+                Authorization: `Bearer ${token}`
+            },
             signal,
         });
         return await response.json();
@@ -178,16 +181,33 @@ const boost = async ({ signal, mewsId }) => {
     }
 }
 
-const unboost = async ({ signal, mewsId }) => {
+const unboost = async ({ signal, mewsId, token }) => {
     try {
         let response = await fetch(`${BASE_URL}/${mewsId}/unboost`, {
             method: 'PUT',
-            headers,
+            headers: {
+                ...headers,
+                Authorization: `Bearer ${token}`
+            },
             signal,
         });
         return await response.json();
     } catch (error) {
         console.log(error);
+    }
+}
+
+const auth = () => {
+    try {
+        const credentials = JSON.parse(localStorage.getItem('credentials'))
+        return credentials
+            && credentials.token
+            && credentials.user.username
+            && credentials.user._id
+            ? credentials
+            : false
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -204,7 +224,8 @@ const mewsapi = {
     updatechild,
     destroy,
     boost,
-    unboost
+    unboost,
+    auth
 };
 
 export default mewsapi;
