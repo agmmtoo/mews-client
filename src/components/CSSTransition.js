@@ -5,14 +5,14 @@ const Fade = ({children}) =>
         in={true}
         appear={true}
         unmountOnExit={true}
-        timeout={300}
+        timeout={150}
         classNames={{
             appear: 'opacity-0',
-            appearActive: 'transition-opacity duration-300 opacity-100',
+            appearActive: 'transition-opacity duration-150 opacity-100',
             enter: 'opacity-0',
-            enterActive: 'transition-opacity duration-300 opacity-100',
+            enterActive: 'transition-opacity duration-150 opacity-100',
             exit: 'opacity-100',
-            exitActive: 'transition-opacity duration-300 opacity-0',
+            exitActive: 'transition-opacity duration-150 opacity-0',
         }}>
         {children}
     </CSSTransition>

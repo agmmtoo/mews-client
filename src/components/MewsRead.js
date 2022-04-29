@@ -48,7 +48,7 @@ const MewsDetail = ({ mews, setMews }) => {
     let ms = new Date(mews.createdAt) / 1000
     return (
         <Fade>
-            <div className='divide-y-2 space-y-2 rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5 bg-gradient-to-r from-fuchsia-300 to-indigo-300 dark:from-violet-500 dark:to-fuchsia-500'>
+            <div className='divide-y-2 space-y-2 rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5 bg-gradient-to-r from-fuchsia-200 to-violet-300 dark:from-violet-500 dark:to-fuchsia-400'>
                 <div>
                     {mews.title && <h1 className='font-semibold text-2xl'>{mews.title}</h1>}
                     <div className='flex flex-row items-center gap-5 text-sm'>
