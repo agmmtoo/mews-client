@@ -13,7 +13,6 @@ const Fade = ({children}) =>
             enterActive: 'transition-opacity duration-300 opacity-100',
             exit: 'opacity-100',
             exitActive: 'transition-opacity duration-300 opacity-0',
-            exitDone: 'bg-blue-500'
         }}>
         {children}
     </CSSTransition>

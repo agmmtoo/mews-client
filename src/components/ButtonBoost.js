@@ -17,8 +17,7 @@ const ButtonBoost = ({ mews, mewslist, setMewslist }) => {
         const newMewslist = mewslist.map(m => {
             if (m._id === mews._id) m.boosters.push(credentials.user._id)
             return m
-        }
-        )
+        })
         setMewslist(newMewslist)
     }
 
@@ -28,11 +27,42 @@ const ButtonBoost = ({ mews, mewslist, setMewslist }) => {
         const newMewslist = mewslist.map(m => {
             if (m._id === mews._id) m.boosters = m.boosters.filter(id => id !== credentials.user._id)
             return m
-        }
-        )
+        })
         setMewslist(newMewslist)
     }
+    return Buttons({mews, credentials, boosted, redirectToLogin, handleBoost, handleUnboost})
 
+}
+
+const ButtonBoostMews = ({ mews, setMews }) => {
+    let navigate = useNavigate();
+    const credentials = mewsapi.auth();
+    let boosted = credentials && mews.boosters.indexOf(credentials.user._id) !== -1
+        ? true
+        : false
+
+    const redirectToLogin = () => {
+        navigate('/login')
+    }
+
+    const handleBoost = () => {
+        mewsapi.boost({ mewsId: mews._id, token: credentials.token })
+            .then(console.log)
+        mews.boosters.push(credentials.user._id)
+        setMews({...mews})
+    }
+
+    const handleUnboost = () => {
+        mewsapi.unboost({ mewsId: mews._id, token: credentials.token })
+            .then(console.log)
+        mews.boosters = mews.boosters.filter(id => id !== credentials.user._id)
+        setMews({...mews})
+    }
+    return Buttons({mews, credentials, boosted, redirectToLogin, handleBoost, handleUnboost})
+
+}
+
+const Buttons = ({mews, credentials, boosted, redirectToLogin, handleBoost, handleUnboost}) => {
     if (!credentials) return (
         <button className='flex items-center gap-2 text-emerald-500' onClick={redirectToLogin}>
             <svg className='' fill='currentColor' width='17' height='17' viewBox="0 0 320 512">
@@ -59,7 +89,6 @@ const ButtonBoost = ({ mews, mewslist, setMewslist }) => {
             {mews.points}
         </button>
     )
-
 }
 
-export default ButtonBoost
+export {ButtonBoost, ButtonBoostMews}

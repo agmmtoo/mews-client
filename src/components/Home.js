@@ -5,7 +5,7 @@ import Fade from './CSSTransition';
 
 import mewsapi from '../api/mews-api';
 import formatTime from '../utils/formatTime';
-import ButtonBoost from './ButtonBoost';
+import {ButtonBoost} from './ButtonBoost';
 
 const Home = () => {
     const [mewslist, setMewslist] = useState([])

@@ -5,7 +5,7 @@ import Fade from './CSSTransition';
 
 import mewsapi from '../api/mews-api';
 import formatTime from '../utils/formatTime';
-import ButtonBoost from './ButtonBoost';
+import {ButtonBoost} from './ButtonBoost';
 
 const Children = ({ parent }) => {
     const [children, setChildren] = useState([])
@@ -45,7 +45,7 @@ const Children = ({ parent }) => {
 export default Children;
 
 const Child = ({ mews, mewslist, setMewslist }) => (
-    <div className='divide-y-2 space-y-2  bg-slate-50 dark:bg-neutral-700 rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5'>
+    <div className='divide-y-2 space-y-2 bg-slate-50 dark:bg-neutral-700 rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5'>
         {mews.title && <h1 className='font-semibold text-2xl'>{mews.title}</h1>}
         <div className='flex flex-row items-center gap-5 text-sm'>
             <div className=''>@{mews.submitter.username}</div>
