@@ -1,14 +1,15 @@
 import mewsapi from '../api/mews-api';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ButtonBoost = ({ mews, mewslist, setMewslist }) => {
+    let navigate = useNavigate();
     const credentials = mewsapi.auth();
     let boosted = credentials && mews.boosters.indexOf(credentials.user._id) !== -1
         ? true
         : false
 
     const redirectToLogin = () => {
-        return <Navigate to='/login}' />
+        navigate('/login')
     }
     const handleBoost = () => {
         mewsapi.boost({ mewsId: mews._id, token: credentials.token })
