@@ -94,15 +94,15 @@ const submitmews = async ({ title, link, body, signal }) => {
 };
 
 // submit children
-const submitchildren = async ({ parent, body, signal }) => {
+const submitchildren = async ({ parent, body, token, signal }) => {
     try {
         let response = await fetch(`${BASE_URL}`, {
             method: 'POST',
-            headers,
+            headers: {...headers, 'Authorization': `Bearer ${token}`},
             signal,
             body: JSON.stringify({ parent, body })
         });
-        return await response.json();
+        return {status: response.status, data: await response.json()};
     } catch (error) {
         console.log(error);
     }

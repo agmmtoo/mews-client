@@ -38,8 +38,8 @@ const formatTime = unixTime => {
         ago = sAgo / periods.h;
         unit = 'h'
     }
-    else if (sAgo > periods.m) {
-        ago = sAgo / periods.m;
+    else if (sAgo > periods.mins) {
+        ago = sAgo / periods.mins;
         unit = 'mins'
     }
     else ago = 0

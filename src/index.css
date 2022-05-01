@@ -2,10 +2,12 @@
 body {
   @apply bg-slate-200 text-slate-800 dark:bg-neutral-900 dark:text-neutral-300 selection:bg-indigo-500 selection:text-white;
 }
-
+/* body {
+  background: url(/home/ammo/FB_IMG_1588003654728.jpg) center / cover no-repeat fixed;
+} */
 [type="text"],
 [type="password"] {
-  @apply dark:bg-neutral-700 invalid:border-red-500 focus:invalid:ring-0;
+  @apply rounded-md dark:bg-neutral-700 invalid:border-red-500 focus:invalid:ring-0;
 }
 @tailwind components;
 @tailwind utilities;
