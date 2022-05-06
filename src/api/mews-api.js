@@ -22,7 +22,7 @@ const list = async ({ signal }) => {
 };
 
 // list by points
-const boostedmews = async ({ signal, daysago = 7 }) => {
+const boostedmews = async ({ signal, daysago = 10 }) => {
     try {
         let response = await fetch(`${BASE_URL}?rank=true&daysago=${daysago}`, {
             method: 'GET',
@@ -87,7 +87,7 @@ const submitmews = async ({ title, link, body, signal }) => {
             signal,
             body: JSON.stringify({ title, link, body })
         });
-        return await response.json();
+        return { status: response.status, data: await response.json() };
     } catch (error) {
         console.log(error);
     }
@@ -98,11 +98,11 @@ const submitchildren = async ({ parent, body, token, signal }) => {
     try {
         let response = await fetch(`${BASE_URL}`, {
             method: 'POST',
-            headers: {...headers, 'Authorization': `Bearer ${token}`},
+            headers: { ...headers, 'Authorization': `Bearer ${token}` },
             signal,
             body: JSON.stringify({ parent, body })
         });
-        return {status: response.status, data: await response.json()};
+        return { status: response.status, data: await response.json() };
     } catch (error) {
         console.log(error);
     }
@@ -116,50 +116,50 @@ const read = async ({ signal, mewsId }) => {
             headers,
             signal,
         });
-        return await response.json();
+        return { status: response.status, data: await response.json() };
     } catch (error) {
         console.log(error);
     }
 };
 
 // update
-const updatemews = async ({ signal, mewsId, title, link }) => {
+const updatemews = async ({ signal, token, mewsId, title, link, body }) => {
     try {
         let response = await fetch(`${BASE_URL}/${mewsId}`, {
             method: 'PUT',
-            headers,
+            headers: { ...headers, 'Authorization': `Bearer ${token}` },
             signal,
-            body: JSON.stringify({ title, link })
+            body: JSON.stringify({ title, link, body })
         });
-        return await response.json();
+        return { status: response.status, data: await response.json() };
     } catch (error) {
         console.log(error);
     }
 }
-
+// +++++++ merge these two ++++++++++++++
 // updatechild
-const updatechild = async ({ signal, mewsId, body }) => {
+const updatechild = async ({ signal, token, mewsId, body }) => {
     try {
         let response = await fetch(`${BASE_URL}/${mewsId}`, {
             method: 'PUT',
-            headers,
+            headers: { ...headers, 'Authorization': `Bearer ${token}` },
             signal,
             body: JSON.stringify({ body })
         });
-        return await response.json();
+        return { status: response.status, data: await response.json() };
     } catch (error) {
         console.log(error);
     }
 }
 
-const destroy = async ({ signal, mewsId }) => {
+const destroy = async ({ signal, token, mewsId }) => {
     try {
         let response = await fetch(`${BASE_URL}/${mewsId}`, {
             method: 'DELETE',
-            headers,
+            headers: { ...headers, 'Authorization': `Bearer ${token}` },
             signal
         });
-        return await response.json();
+        return { status: response.status, data: await response.json() };
     } catch (error) {
         console.log(error)
     }

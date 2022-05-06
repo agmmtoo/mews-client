@@ -37,7 +37,7 @@ const Register = () => {
                     <div className='text-sm text-neutral-500'>
                         <p>Username should be:</p>
                         <p>at lease 4 characters, can be _, A-Z, a-z, 0-9, not ends with 'bot'</p>
-                        
+
                     </div>
                     {/* username rules
                         allowed: _ a-z A-Z 0-9
@@ -49,8 +49,8 @@ const Register = () => {
                     </div>
                     <input pattern='.{4,}' required className='rounded-md' name='password' type='password' value={values.password} onChange={handleChange} />
                     <div className='flex justify-between mt-3 items-center text-sm'>
-                        <button type='submit' className='border-indigo-500 border px-4 py-2 rounded-md hover:shadow-md hover:ring-1 ring-blue-500'>Sign Up</button>
                         <Link to='/login'>Already have an account?</Link>
+                        <button type='submit' className='border-indigo-500 border px-4 py-2 rounded-md hover:shadow-md hover:ring-1 ring-blue-500'>Sign Up</button>
                     </div>
                 </form>
             </div>

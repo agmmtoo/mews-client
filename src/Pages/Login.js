@@ -38,8 +38,8 @@ const Login = () => {
                     <label htmlFor='password'>Password</label>
                     <input required className='rounded-md' name='password' type='password' value={values.password} onChange={handleChange} />
                     <div className='flex justify-between mt-3 items-center text-sm'>
-                        <button type='submit' className='border-indigo-500 border px-4 py-2 rounded-md hover:shadow-md hover:ring-1 ring-blue-500'>Login</button>
                         <Link to='/register'>Don't have an account?</Link>
+                        <button type='submit' className='border-indigo-500 border px-4 py-2 rounded-md hover:shadow-md hover:ring-1 ring-blue-500'>Login</button>
                     </div>
                 </form>
             </div>
