@@ -25,7 +25,7 @@ const Register = () => {
     return (
         <Fade>
             <div
-                className='h-screen flex flex-col justify-center items-center'>
+                className='flex flex-col justify-center items-center'>
                 <form
                     onSubmit={handleSubmit}
                     className='w-4/5 max-w-sm shadow-md rounded-md p-5 flex flex-col gap-3 bg-slate-50 dark:bg-neutral-700'

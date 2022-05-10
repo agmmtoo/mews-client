@@ -1,10 +1,10 @@
 import { CSSTransition } from 'react-transition-group';
 
-const Fade = ({children}) =>
+const Fade = ({children, inProps}) =>
     <CSSTransition
-        in={true}
+        in={inProps}
         appear={true}
-        unmountOnExit={true}
+        // unmountOnExit={true}
         timeout={150}
         classNames={{
             appear: 'opacity-0',

@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Fade from './CSSTransition';
-
 import mewsapi from '../api/mews-api';
 import formatTime from '../utils/formatTime';
 import { ButtonBoost } from './ButtonBoost';
@@ -38,20 +36,17 @@ const Children = ({ parent: parentMews }) => {
     if (error) return <pre>{JSON.stringify(error)}</pre>
 
     return (
-        <Fade>
-            <div className='ml-5 mb-5'>
-                {children.map(child => (
-                    <div key={child._id} className=''>
-                        <Child
-                            mews={child}
-                            mewslist={children}
-                            setMewslist={setChildren}
-                            setReladVar={setReladVar}
-                        />
-                    </div>
-                ))}
-            </div>
-        </Fade>
+        <div className='ml-5 mb-5'>
+            {children.map(child => (
+                <Child
+                    key={child._id}
+                    mews={child}
+                    mewslist={children}
+                    setMewslist={setChildren}
+                    setReladVar={setReladVar}
+                />
+            ))}
+        </div>
     )
 }
 
@@ -62,23 +57,41 @@ const Child = ({ mews, mewslist, setMewslist, setReladVar }) => {
     const [action, setAction] = useState('')
     return (
         <>
-            <div className='border dark:border-slate-500 divide-y-2 space-y-2 bg-slate-50 dark:bg-neutral-700 rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5'>
+            <div className='divide-y border dark:border-primary-black dark:divide-primary-black space-y-2 bg-slate-50 dark:bg-secondary-black rounded-lg shadow-md mx-auto mt-5 p-3 w-11/12 md:w-4/5'>
 
                 {mews.title && <h1 className='font-semibold text-2xl'>{mews.title}</h1>}
                 <div className='flex flex-row items-center gap-5 text-sm' onClick={() => setOpen(open => !open)}>
-                    <div className=''>@{mews.submitter.username}</div>
+                    <Link to={`/profile/${mews.submitter.username}`} className=''>@{mews.submitter.username}</Link>
                     <div>{formatTime(new Date(mews.createdAt) / 1000)}</div>
                 </div>
                 {mews.body && open && <div className='pt-3'>{mews.body}</div>}
                 <div className="pt-3 flex flex-row items-center gap-5">
                     <ButtonBoost mews={mews} mewslist={mewslist} setMewslist={setMewslist} />
                     {/* WATCHOUT */}
-                    <ButtonComment className='will-change-contents' mews={mews} setReloadVar={setReladVar} />
+                    <ButtonComment mews={mews} setReloadVar={setReladVar} />
                     <ButtonPopover mews={mews} setAction={setAction}>
                         <Link role='button' to={`/${mews._id}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                            </svg>
                             Detail
                         </Link>
-                        <div role='button' onClick={() => setOpen(open => !open)}>{open ? 'Hide' : 'Show'}</div>
+                        <div role='button' onClick={() => setOpen(open => !open)}>{
+                            open
+                                ? (<>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clipRule="evenodd" />
+                                    </svg>
+                                    Hide
+                                </>)
+                                : (<>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                    </svg>
+                                    Show
+                                </>)
+                        }</div>
                     </ButtonPopover>
                 </div>
             </div>

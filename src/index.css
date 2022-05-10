@@ -1,10 +1,8 @@
 @tailwind base;
 body {
-  @apply bg-slate-200 text-slate-800 dark:bg-neutral-900 dark:text-neutral-300 selection:bg-fuchsia-500 selection:text-white;
+  @apply bg-slate-200 text-slate-800 dark:bg-primary-black dark:text-neutral-300 selection:bg-fuchsia-500 selection:text-white;
 }
-/* body {
-  background: url(/home/ammo/FB_IMG_1588003654728.jpg) center / cover no-repeat fixed;
-} */
+
 [type="text"],
 [type="password"] {
   @apply rounded-md dark:bg-neutral-700 border-indigo-500 invalid:border-red-500 focus:ring-0;

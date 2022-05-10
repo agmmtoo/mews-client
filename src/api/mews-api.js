@@ -49,6 +49,20 @@ const newestmews = async ({ signal, daysago = 7 }) => {
     }
 }
 
+// list by submitter
+const submittersmews = async ({ signal, submitter}) => {
+    try {
+        let response = await fetch(`${BASE_URL}?submitter=${submitter}`, {
+            method: 'GET',
+            headers,
+            signal
+        });
+        return { status: response.status, data: await response.json() };
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 // children list by points
 const boostedchildren = async ({ signal, parent }) => {
     try {
@@ -215,6 +229,7 @@ const mewsapi = {
     list,
     boostedmews,
     newestmews,
+    submittersmews,
     boostedchildren,
     newestchildren,
     submitmews,

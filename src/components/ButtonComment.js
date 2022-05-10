@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { Dialog, Transition } from '@headlessui/react';
 
@@ -15,7 +15,7 @@ const ButtonComment = ({ mews, setMews, setReloadVar }) => {
     let navigate = useNavigate();
 
     const handleClick = e => {
-        if (!credentials) navigate('/login');
+        if (!credentials) navigate('/login', { replace: false, state: { name: 'hmm' } });
         else setOpen(true);
     }
 
@@ -43,14 +43,13 @@ const ButtonComment = ({ mews, setMews, setReloadVar }) => {
     return (
         <>
             <button className='flex items-center gap-2' onClick={handleClick}>
-                <svg className='stroke-[20px] stroke-current' fill='none' width='20' height='20' viewBox="0 0 512 512">
+                <svg className='fill-current' fill='none' width='20' height='20' viewBox="0 0 512 512">
                     <path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z" />
                 </svg>
                 {mews.children.length}
             </button>
             <DialogModel open={open}>
                 <Form
-                    open={open}
                     handleSubmit={handleSubmit}
                     error={error}
                     values={values}
@@ -65,11 +64,14 @@ const ButtonComment = ({ mews, setMews, setReloadVar }) => {
 
 
 
-const Form = ({ open, setOpen, mews, error, handleSubmit, values, handleChange }) => {
+const Form = ({ setOpen, mews, error, handleSubmit, values, handleChange }) => {
     return (
         <>
-            <div className='border-l-4 pl-2 h-5 overflow-hidden break-words text-sm font-medium text-slate-500  dark:text-slate-300 dark:bg-neutral-600'>
-                {mews.submitter.username}: {mews.title || mews.body}
+            <div className='h-5 flex gap-2 items-center text-slate-500 dark:text-slate-300 dark:bg-neutral-600'>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                </svg>
+                <div className='overflow-hidden break-words text-sm font-medium'>{mews.submitter.username}: {mews.title || mews.body}</div>
             </div>
             <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
                 {error && <p className='text-red-500 uppercase font-medium text-sm mx-auto'>{error}</p>}
