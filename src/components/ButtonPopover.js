@@ -22,7 +22,7 @@ const ButtonPopover = ({ mews, children, setAction }) => {
                 leaveFrom='transform translate-y-3 opacity-100'
                 leaveTo='transform translate-y-0 opacity-50'
             >
-                <Popover.Panel as={Fragment} className='lowercase text-sm z-10 mt-5 absolute px-6 py-2 space-y-2 bg-inherit border rounded bg-slate-200 dark:bg-neutral-700 shadow-lg'>
+                <Popover.Panel as={Fragment} className='lowercase text-sm z-10 mt-5 absolute px-6 py-2 space-y-2 bg-inherit border rounded bg-slate-200 dark:bg-secondary-black shadow-lg'>
                     <div className='grid grid-cols-1'>
                         {children}
                         {credentials && credentials.user._id === mews.submitter._id && <div role='button' onClick={() => setAction('edit')}>

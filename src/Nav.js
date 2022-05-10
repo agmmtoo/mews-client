@@ -11,7 +11,7 @@ export default function Nav(params) {
 
     return (
         <>
-            <header className='mb-6 border-b sticky -top-16 flex items-center h-32 backdrop-blur -backdrop-hue-rotate-60'>
+            <header className='mb-6 border-b sticky -top-16 flex items-center h-32 backdrop-blur'>
                 <nav className='px-4 w-full top-0 sticky flex items-center justify-between h-16'>
                     <NavLink to='/' className='inline-flex gap-2 w-1/2'>
                         <svg alt='logo' fill='none' className='fill-current w-8' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 619.37 477.77">
@@ -33,7 +33,7 @@ export default function Nav(params) {
                         <NavLink className={({ isActive }) => isActive ? 'text-fuchsia-400' : undefined} to={credentials ? '/profile' : 'login'}>{credentials ? `@${credentials?.user?.username}` : 'login'}</NavLink>
                     </div>
                     <div className='md:hidden' role='button' onClick={() => setOpen(open => !open)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
                         </svg>
                     </div>

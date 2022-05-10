@@ -5,7 +5,7 @@ body {
 
 [type="text"],
 [type="password"] {
-  @apply rounded-md dark:bg-neutral-700 border-indigo-500 invalid:border-red-500 focus:ring-0;
+  @apply rounded-md dark:bg-secondary-black border-indigo-500 invalid:border-red-500 focus:ring-0;
 }
 @tailwind components;
 @tailwind utilities;

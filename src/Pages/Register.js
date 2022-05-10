@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import authapi from '../api/auth-api';
-import Fade from '../components/CSSTransition';
 
 const Register = () => {
     const redirect = useNavigate();
@@ -23,12 +22,11 @@ const Register = () => {
             .catch(console.log)
     }
     return (
-        <Fade>
             <div
                 className='flex flex-col justify-center items-center'>
                 <form
                     onSubmit={handleSubmit}
-                    className='w-4/5 max-w-sm shadow-md rounded-md p-5 flex flex-col gap-3 bg-slate-50 dark:bg-neutral-700'
+                    className='w-4/5 max-w-sm shadow-md rounded-md p-5 flex flex-col gap-3 bg-slate-50 dark:bg-secondary-black'
                 >
                     {error
                         ? <p className='text-red-400 mx-auto font-medium uppercase'>{error}</p>
@@ -54,7 +52,6 @@ const Register = () => {
                     </div>
                 </form>
             </div>
-        </Fade>
     )
 }
 

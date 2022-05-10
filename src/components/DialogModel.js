@@ -33,7 +33,7 @@ export default function DialogModel({ open, children }) {
                     leaveTo='transform scale-95 opacity-0'
                 >
                     <div className='max-w-md fixed inset-0 flex items-center justify-center mx-auto'>
-                        <Dialog.Panel className='w-11/12 md:w-full shadow-lg border border-slate-300 dark:border-slate-500 mx-auto p-2 rounded-md bg-slate-50 dark:bg-neutral-700'>
+                        <Dialog.Panel className='w-11/12 md:w-full shadow-lg border border-slate-300 dark:border-slate-500 mx-auto p-2 rounded-md bg-slate-50 dark:bg-secondary-black'>
                             {children}
                         </Dialog.Panel>
                     </div>

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import Fade from './CSSTransition';
 import { ButtonBoostMews } from './ButtonBoost';
 import ButtonComment from './ButtonComment';
 import ButtonPopover from './ButtonPopover';
@@ -57,37 +56,35 @@ const MewsDetail = ({ mews, setMews }) => {
     const [action, setAction] = useState('')
     return (
         <>
-            <Fade>
-                <div className='border dark:border-primary-black dark:divide-primary-black divide-y-2 space-y-2 rounded-lg shadow-md mx-auto p-3 w-11/12 md:w-4/5 bg-gradient-to-r from-fuchsia-300 to-violet-300 dark:from-indigo-400 dark:to-fuchsia-400'>
-                    <div>
-                        {mews.title && <h1 className='font-semibold text-2xl'>{mews.title}</h1>}
-                        <div className='flex flex-row items-center gap-5 text-sm'>
-                            <Link to={`/profile/${mews.submitter.username}`} className=''>@{mews.submitter.username}</Link>
-                            <time dateTime={mews.createdAt}>{formatTime(ms)}</time>
-                        </div>
-                    </div>
-                    {mews.body && <p className='pt-3 mt-3 break-words'>{mews.body}</p>}
-                    <div className='text-xs tracking-wider uppercase pt-3 mt-3 grid gap-2'>
-                        <div>edit: <time dateTime={mews.updatedAt}>{new Date(mews.updatedAt).toLocaleString()}</time></div>
-                        {mews.parent && <div className='flex items-center'>
-                            {mews.ancestors
-                                .map((grand, i) => (
-                                    <>
-                                        <Link key={grand} to={`/${grand}`}>
-                                            <div className='w-2 h-2 bg-current rounded-md' />
-                                        </Link>
-                                        <div key={i} className='w-6 h-[1px] bg-current' />
-                                    </>))}
-                            {mews.parent && <Link to={`/${mews.parent}`}><div className='w-2 h-2 bg-current rounded-md' /></Link>}
-                        </div>}
-                    </div>
-                    <div className="pt-3 mt-3 flex flex-row items-center gap-5">
-                        <ButtonBoostMews mews={mews} setMews={setMews} />
-                        <ButtonComment mews={mews} setMews={setMews} />
-                        <ButtonPopover mews={mews} setAction={setAction} />
+            <div className='border dark:border-primary-black dark:divide-primary-black divide-y-2 space-y-2 rounded-lg shadow-md mx-auto p-3 w-11/12 md:w-4/5 bg-gradient-to-r from-fuchsia-300 to-violet-300 dark:from-indigo-400 dark:to-fuchsia-400'>
+                <div>
+                    {mews.title && <h1 className='font-semibold text-2xl'>{mews.title}</h1>}
+                    <div className='flex flex-row items-center gap-5 text-sm'>
+                        <Link to={`/profile/${mews.submitter.username}`} className=''>@{mews.submitter.username}</Link>
+                        <time dateTime={mews.createdAt}>{formatTime(ms)}</time>
                     </div>
                 </div>
-            </Fade>
+                {mews.body && <p className='pt-3 mt-3 break-words'>{mews.body}</p>}
+                <div className='text-xs tracking-wider uppercase pt-3 mt-3 grid gap-2'>
+                    <div>edit: <time dateTime={mews.updatedAt}>{new Date(mews.updatedAt).toLocaleString()}</time></div>
+                    {mews.parent && <div className='flex items-center'>
+                        {mews.ancestors
+                            .map((grand, i) => (
+                                <>
+                                    <Link key={grand} to={`/${grand}`}>
+                                        <div className='w-2 h-2 bg-current rounded-md' />
+                                    </Link>
+                                    <div key={i} className='w-6 h-[1px] bg-current' />
+                                </>))}
+                        {mews.parent && <Link to={`/${mews.parent}`}><div className='w-2 h-2 bg-current rounded-md' /></Link>}
+                    </div>}
+                </div>
+                <div className="pt-3 mt-3 flex flex-row items-center gap-5">
+                    <ButtonBoostMews mews={mews} setMews={setMews} />
+                    <ButtonComment mews={mews} setMews={setMews} />
+                    <ButtonPopover mews={mews} setAction={setAction} />
+                </div>
+            </div>
             <DialogModel open={action === 'edit'}><EditForm mews={mews} setMews={setMews} setAction={setAction} /></DialogModel>
             <DialogModel open={action === 'delete'}><DeleteForm mews={mews} setMews={setMews} setAction={setAction} /></DialogModel>
         </>

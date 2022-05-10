@@ -25,7 +25,7 @@ export default function Menu({ open, setOpen }) {
                         leaveFrom='opacity-100'
                         leaveTo='opacity-50'
                     >
-                        <Dialog.Panel className='bg-slate-50/70 dark:bg-neutral-700/70 py-5 flex flex-col w-11/12 gap-10 items-center shadow-lg border border-slate-300 dark:border-slate-500 mx-auto rounded-md'>
+                        <Dialog.Panel className='bg-slate-50/70 dark:bg-secondary-black py-5 flex flex-col w-11/12 gap-10 items-center shadow-lg border border-slate-300 dark:border-slate-500 mx-auto rounded-md'>
                             <NavLink to={credentials ? '/profile' : 'login'} className={({isActive}) => isActive ? 'text-fuchsia-400 underline underline-offset-4': undefined} onClick={() => setOpen(false)}>{credentials ? `@${credentials?.user?.username}` : 'login'}</NavLink>
                             <NavLink to='/about' className={({isActive}) => isActive ? 'text-fuchsia-400 underline underline-offset-4': undefined} onClick={() => setOpen(false)}>About</NavLink>
                             <NavLink to='/faq' className={({isActive}) => isActive ? 'text-fuchsia-400 underline underline-offset-4': undefined} onClick={() => setOpen(false)}>FAQ</NavLink>

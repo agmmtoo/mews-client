@@ -19,7 +19,7 @@ export default function About() {
 }
 
 const AboutItem = ({h1, p}) => (
-    <div className='group hover:shadow-md hover:bg-indigo-400 w-4/5 md:w-2/3 self-start even:self-end p-4 space-y-2 border dark:border-slate-500 rounded-lg transition-colors block bg-slate-50 dark:bg-neutral-700'>
+    <div className='group hover:shadow-md hover:bg-indigo-400 w-4/5 md:w-2/3 self-start even:self-end p-4 space-y-2 border dark:border-slate-500 rounded-lg transition-colors block bg-slate-50 dark:bg-secondary-black'>
         <h1 className='group-hover:text-white text-2xl font-extrabold text-indigo-500 dark:text-indigo-400'>
             {h1}
         </h1>

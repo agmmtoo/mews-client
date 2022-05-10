@@ -11,7 +11,7 @@ export default function Faq() {
 }
 
 const Detail = ({ q, a }) => (
-    <details className='marker:open:text-indigo-500 open:bg-white transition dark:open:bg-neutral-700 open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-4 rounded-lg'>
+    <details className='marker:open:text-indigo-500 open:bg-white transition dark:open:bg-secondary-black open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-4 rounded-lg'>
         <summary className='leading-6 font-semibold select-none'>
             {q}
         </summary>
