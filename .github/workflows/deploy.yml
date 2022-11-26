@@ -27,25 +27,25 @@ jobs:
       - name: Build
         run: CI=false yarn build
 
-      # - name: rsync deployments
-      #   uses: burnett01/rsync-deployments@5.2
-      #   with:
-      #     switches: -avzr --delete
-      #     path: build/
-      #     remote_path: /home/ammo/mews-client/
-      #     remote_host: ${{ secrets.HOST }}
-      #     remote_user: ${{ secrets.USERNAME }}
-      #     remote_key: ${{ secrets.KEY }}
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete
+          path: build/
+          remote_path: /home/ammo/mews-client/
+          remote_host: ${{ secrets.HOST }}
+          remote_user: ${{ secrets.USERNAME }}
+          remote_key: ${{ secrets.KEY }}
 
       # copy files from $GITHUB_WORKSPACE "." to remote "/home/ammo/mews-client/"
-      - name: copy file via ssh key
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          source: "./build/*"
-          target: "/home/ammo/mews-client/"
+      # - name: copy file via ssh key
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     key: ${{ secrets.KEY }}
+      #     source: "./build/*"
+      #     target: "/home/ammo/mews-client/"
 
       # run commands on remote via ssh
       # - name: Deploy using ssh
